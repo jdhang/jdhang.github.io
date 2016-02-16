@@ -13,7 +13,7 @@ timezone: America/New_York
 markdown: kramdown
 kramdown:
     input: GFM
-    syntax-highlighter: rouge
+    syntax_highlighter: rouge
 permalink: pretty
 paginate: 6
 
