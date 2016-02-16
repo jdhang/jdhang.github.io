@@ -29,7 +29,7 @@ function would then return the `list` object.
 
 My code looked like the following:
 
-~~~ javascript
+``` javascript
 function arrayToList(array) {
   var list = {};
   var temp = {};
@@ -44,16 +44,16 @@ function arrayToList(array) {
   }
   return list;
 }
-~~~
+```
 
 Now to me this made sense because I was assigning the known properties of `list`
 with the dot notation. This unfortunately gave me unexpected results when I ran
 the code. The output was the following:
 
-~~~ console
+``` shell
 > console.log(arrayToList([1, 2, 3]));
 {value: 1, rest: [Circular]}
-~~~
+```
 
 This was very frustrating to me and I could not figure out what the problem was.
 I tried to google the answer but came up with nothing. Although part of the
@@ -62,23 +62,23 @@ pulling I decided to just assign the `list` object outright.
 
 I changed this
 
-~~~ javascript
+``` javascript
 list.value = array[i];
 list.rest = temp;
-~~~
+```
 
 to:
 
-~~~ javascript
+``` javascript
 list = {value: array[i], rest: temp}
-~~~
+```
 
 And when I ran the code again I got the result I wanted.
 
-~~~ console
+``` shell
 > console.log(arrayToList([1, 2, 3]));
 {value: 1, rest: {value: 2, rest: {value: 3, rest: null}}}
-~~~
+```
 
 Now this did not initially make sense to me, why does the explicit reassignment
 but the dot notation of individual properties raise an error. After some
@@ -96,26 +96,26 @@ changed the assignment of `temp` to create a "clone" of `list`, basically create
 a new object with the same values as `list`, then my code with the dot notation
 assignments would work.
 
-~~~ javascript
+``` javascript
 temp = list;
 // becomes
 temp = {value: list.value, rest: list.rest}
-~~~
+```
 
 And it did!
 
 In the end I felt that reassigning the `list` object with this code:
 
-~~~ javascript
+``` javascript
 list = {value: array[i], rest: temp}
-~~~
+```
 
 seemed better than explicitly reassigning the properties. In addition to that I
 felt the need to set `temp` to the `list` properties to be safe as well.
 
-~~~ javascript
+``` javascript
 temp = {value: list.value, rest: list.rest}
-~~~
+```
 
 **To summarize:**
 
