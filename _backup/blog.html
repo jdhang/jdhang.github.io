@@ -1,0 +1,28 @@
+---
+layout: default
+title: Blog
+---
+
+<div class="home">
+
+  <h1 class="page-heading">
+    Development Posts
+  </h1>
+
+  <ul class="post-list">
+    {% for post in site.posts  offset:0 limit:5 %}
+      <li>
+        <header class="post-header">
+          <h2 class="post-title">
+            <a class="post-title-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
+          <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+        </header>
+        {{ post.content | split:'<!--break-->' | first }}
+        {% if post.content contains '<!--break-->' %}
+          <a href="{{ post.url }}">Read more</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
