@@ -1,0 +1,21 @@
+# Site settings
+title: Jason Hang
+email: jason.d.hang@gmail.com
+github_username: jdhang
+twitter_username: jasonhang
+description: > # this means to ignore newlines until "baseurl:"
+  Never stop learning
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "" # the base hostname & protocol for your site
+timezone: America/New_York
+
+# Build settings
+markdown: kramdown
+kramdown:
+    input: GFM
+    syntax-highlighter: rouge
+permalink: pretty
+paginate: 6
+
+# Plugins
+gems: [jekyll-paginate]
