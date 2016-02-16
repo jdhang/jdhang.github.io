@@ -127,10 +127,15 @@ blockquote {
  */
 pre,
 code {
+    // color: #f8f8f2; // monokai
+    color: #93a1a1; // solarized dark
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    // background-color: #eef; // syntax highlight
+    // background-color: #282722; // monokai
+    background-color: #002b36; // solarized dark
+    // background-color: #333333; // desert
 }
 
 code {
